@@ -1,10 +1,16 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
-const DBConnect = async () => {
+const DB_URL = process.env.DB_URL;
+
+export const DBConnect = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://amanverma-cmd:Aman%408789@cluster0.vu2sga4.mongodb.net/docker-compose",
-    );
+    if (!DB_URL) {
+      console.error("DB_URL is not initialized.");
+      return;
+    }
+
+    await mongoose.connect(DB_URL);
+    console.log("DB connected successfully.");
   } catch (error) {
     console.error("Error while connecting to DB", error);
   }
