@@ -1,0 +1,28 @@
+## Manual Installation
+
+Install node.js manually
+CLone the repo
+Install dependencies (npm install)
+start the db locally
+
+- docker run -d --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=secretpassword -v mongo_data:/data/db mongo:latest
+- get a url from mongodb and configure it
+  change .env file update db credentials
+  npm run build
+  npm run start
+
+## Docker Installation
+
+Install docker
+start mongo db locally -
+
+- docker run -d --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=secretpassword -v mongo_data:/data/db mongo:latest
+  build the docker image
+- `docker build -t user-project .`
+  start the image
+- `docker run -p 3000:3000 user-project`
+
+## Docker Compose Installation Steps
+
+Install docker, docker-compose
+Run - `docker-compose up`
