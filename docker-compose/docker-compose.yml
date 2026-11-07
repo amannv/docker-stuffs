@@ -1,24 +1,27 @@
-version: '1.0'
 services:
-mongodb:
-     image: mongo
-     container_name: mongodb
-     ports: 27017:27017
-     environment:
-        MONGO_INITDB_ROOT_USERNAME: admin
-        MONGO_INITDB_ROOT_PASSWORD: mysecretpassword
-     volumes: mongodbdata:/data/db
-     restart: unless-stopped
+     mongodb:
+          image: mongo
+          container_name: mongodb
+          ports:
+               - "27017:27017"
+          environment:
+               MONGO_INITDB_ROOT_USERNAME: admin
+               MONGO_INITDB_ROOT_PASSWORD: mysecretpassword
+          volumes:
+               - mongodbdata:/data/db
+          restart: unless-stopped
 
-backend:
-    build: .
-    container_name: backend
-    ports: 3000:3000
-    environment:
-            PORT: 3000
-            DB_URL: mongodb://admin:mysecretpassword@mongodb:27017/mydatabase?authSource=admin
-    depends_on: mongodb
-    restart: unless-stopped
+     backend:
+          build: .
+          container_name: backend
+          ports:
+               - "3000:3000"
+          environment:
+               PORT: 3000
+               DB_URL: mongodb://admin:mysecretpassword@mongodb:27017/mydatabase?authSource=admin
+          depends_on:
+               - mongodb
+          restart: unless-stopped
 
 volumes:
      mongodbdata:

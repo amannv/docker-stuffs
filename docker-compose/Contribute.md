@@ -14,8 +14,9 @@ start the db locally
 ## Docker Installation
 
 Install docker
+create a network - docker create network backend-network
+create a volume - docker create volume mongodb_data
 start mongo db locally -
-
 - docker run -d --name mongodb -p 27017:27017 --network backend-network -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=secretpassword -v mongodb_data:/data/db mongo:latest
   build the docker image
 - `docker build -t user-project .`
