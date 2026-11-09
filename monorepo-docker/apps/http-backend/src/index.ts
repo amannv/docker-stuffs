@@ -5,13 +5,11 @@ import prisma from "@repo/database/prisma";
 const app = express();
 app.use(express.json());
 
-app.post("/signup", async (req, res) => {
-  const { username, password } = req.body;
-
+app.post("/create-user", async (req, res) => {
   const user = await prisma.client.user.create({
     data: {
-      username: username,
-      password: password,
+      username: Math.random().toString(),
+      password: Math.random().toString(),
     },
   });
 
@@ -21,4 +19,4 @@ app.post("/signup", async (req, res) => {
   });
 });
 
-app.listen(3000, () => [console.log("Server is running on port 3000.")]);
+app.listen(3001, () => [console.log("Server is running on port 3000.")]);
