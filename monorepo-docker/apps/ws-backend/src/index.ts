@@ -17,4 +17,10 @@ wss.on("connection", async (socket) => {
   };
 
   socket.send(JSON.stringify(message));
+
+  socket.on("message", (data) => {
+    const message = data.toString();
+
+    socket.send(JSON.stringify(message));
+  });
 });

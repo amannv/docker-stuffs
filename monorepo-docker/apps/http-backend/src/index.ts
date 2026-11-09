@@ -6,10 +6,12 @@ const app = express();
 app.use(express.json());
 
 app.post("/create-user", async (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
   const user = await prisma.client.user.create({
     data: {
-      username: Math.random().toString(),
-      password: Math.random().toString(),
+      username: username,
+      password: password,
     },
   });
 
