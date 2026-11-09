@@ -85,6 +85,9 @@ importers:
       '@types/ws':
         specifier: ^8.18.2
         version: 8.18.2
+      dotenv:
+        specifier: ^18.0.9
+        version: 18.0.9
       ws:
         specifier: ^8.22.1
         version: 8.22.1
